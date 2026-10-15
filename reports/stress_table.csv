@@ -1,0 +1,4 @@
+scenario,value
+baseline_parametric_VaR_95,0.014673482718565823
+parallel_shock_loss_-10pct,0.1
+parametric_VaR_95_vol_x2,0.029542333068600848

@@ -1,4 +1,7 @@
+"""Portfolio returns and losses from asset returns and weights."""
+
 import numpy as np
+
 
 def validate_weights(weights: np.ndarray, tol: float = 1e-8) -> np.ndarray:
     """Ensure 1-D weights, non-negative, sum to 1. Return float array.
@@ -14,8 +17,10 @@ def validate_weights(weights: np.ndarray, tol: float = 1e-8) -> np.ndarray:
 
 def portfolio_returns(returns: np.ndarray, weights: np.ndarray) -> np.ndarray:
     """returns: (T, N), weights: (N,). Return R_p shape (T,)."""
+    validate_weights(weights)
     return np.dot(returns, weights)
 
 def portfolio_losses(returns: np.ndarray, weights: np.ndarray) -> np.ndarray:
     """L = -R_p."""
-    return -np.dot(returns, weights)
+    validate_weights(weights)
+    return -portfolio_returns(returns, weights)
